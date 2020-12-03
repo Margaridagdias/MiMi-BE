@@ -8,6 +8,10 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const passport = require("passport");
+
+
+require('./configs/passport');
 
 
 mongoose
@@ -46,13 +50,21 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'MiMi';
 
 
+const authRoutes = require('./routes/auth-routes');
+app.use('/api', authRoutes);
 
-const index = require('./routes/index');
-app.use('/', index);
+const profileRoutes = require('./routes/profile-routes');
+app.use('/api', profileRoutes);
 
+const mainRoutes = require('./routes/main-routes');
+app.use('/api', mainRoutes);
 
 module.exports = app;
