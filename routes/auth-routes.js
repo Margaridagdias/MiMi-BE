@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 router.post("/signup", (req, res) => {
-  const { username, email, password, name } = req.body;
+  const { username, email, password, name, fileUrl } = req.body;
 
   if (!username || !email || !password || !name) {
     res.status(400).json({ message: "Provide all information" });
@@ -31,7 +31,7 @@ router.post("/signup", (req, res) => {
       email: email,
       password: hashPass,
       name: name,
-      
+      imageUrl: fileUrl,
     });
 
     aNewUser.save((err) => {
@@ -88,6 +88,5 @@ router.get("/loggedin", (req, res) => {
   //NO ONE IS AUTHENTICATED
   res.json({});
 });
-
 
 module.exports = router;
