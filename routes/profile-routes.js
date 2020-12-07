@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user-model");
 const fileUpload = require("../configs/cloudinary");
+const Post = require("../models/post-model")
 
 
 
@@ -20,30 +21,20 @@ router.get("/profile", (req, res, next) => {
   });
 });
 
-router.post("/profile", (req, res) => {
-  let user = req.app.locals.loggedUser;
-  let { username, email, password, name } = req.body;
+router.put("/edit-profile", (req, res) => {
+  let user = req.user;
+  let { username, email, name, bio, imageUrl } = req.body;
   User.findByIdAndUpdate(user._id, {
     username,
     email,
-    password,
     name,
-  }).then((updatedUser) => {
-    res.redirect("/profile");
+    bio,
+    imageUrl
+  }).then(() => {
+   res.json({ messsage: "profile updated successfully"});
   });
 });
 
-router.get("/profile/:id", (req, res, next) => {
-  let id = req.params.id;
-  User.findById(id)
-    .then((thisUser) => {
-      console.log(thisUser);
-      res.json(thisUser);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
 
 router.get("/my-profile", (req, res) => {
   const loggedUser = req.user._id;

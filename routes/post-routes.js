@@ -5,11 +5,12 @@ const Post = require('../models/post-model')
 /* GET home page */
 router.post('/create-post', (req, res, next) => {
   console.log(req.body)
-  let {imageUrl} = req.body.imageUrl.data
-  let description = req.body.imageUrl
+  let imageUrl = req.body.imageUrl
+  let description = req.body.description
   
 Post.create({imageUrl, description})
 .then ((response) => {
+  console.log(response)
   res.json(response)
 })
 });

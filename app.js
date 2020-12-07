@@ -83,12 +83,6 @@ app.use("/api", profileRoutes);
 const mainRoutes = require("./routes/main-routes");
 app.use("/api", mainRoutes);
 
-const editMainRoutes = require("./routes/edit-main-routes");
-app.use("/api", editMainRoutes);
-
-const editProfileRoutes = require("./routes/edit-profile-routes");
-app.use("/api", editProfileRoutes);
-
 const postRoutes = require("./routes/post-routes");
 app.use("/api", postRoutes);
 

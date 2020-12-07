@@ -18,6 +18,9 @@ const profileSchema = new Schema(
     },
     music: {
       type: String
+    },
+    imageUrl: {
+      type: String
     }
   }
 );
