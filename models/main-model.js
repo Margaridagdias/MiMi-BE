@@ -7,7 +7,7 @@ const mainSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId
     },
-    backgroundImage: {
+    bgImage: {
       type: String
     },
     font: {

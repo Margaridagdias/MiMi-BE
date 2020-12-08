@@ -24,11 +24,15 @@ const userSchema = new Schema(
       required: [true, "Name is required"],
     },
     bio: {
-      type: String
+      type: String,
     },
     imageUrl: {
       type: String,
     },
+    bgImage: {
+      type: String,
+    },
+    font: String,
     //falta adicionar o facebookID
   },
 

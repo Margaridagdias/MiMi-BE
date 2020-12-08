@@ -7,7 +7,7 @@ const profileSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId
     },
-    backgroundImage: {
+    bgImage: {
       type: String
     },
     font: {
