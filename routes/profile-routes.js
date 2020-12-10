@@ -40,6 +40,7 @@ router.put("/edit-profile", (req, res) => {
 
 router.get("/my-profile", (req, res) => {
   const loggedUser = req.user._id;
+
   User.findById(loggedUser)
     .then((thisUser) => {
       console.log(thisUser);
