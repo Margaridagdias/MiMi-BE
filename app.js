@@ -11,7 +11,6 @@ const passport = require("passport");
 const cors = require("cors");
 const session = require("express-session");
 
-
 require("./configs/passport");
 
 mongoose
@@ -48,8 +47,8 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, 'dist')));
- 
+app.use(express.static(path.join(__dirname, "dist")));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
@@ -70,7 +69,7 @@ app.locals.title = "MiMi";
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.CLIENT_HOSTNAME],
+    origin: [process.env.CLIENT_HOSTNAME, "http://localhost:3000"],
   })
 );
 
@@ -85,6 +84,5 @@ app.use("/api", mainRoutes);
 
 const postRoutes = require("./routes/post-routes");
 app.use("/api", postRoutes);
-
 
 module.exports = app;
