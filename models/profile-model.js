@@ -13,9 +13,7 @@ const profileSchema = new Schema(
     font: {
       type: String
     },
-    fontColor: {
-      type: String
-    },
+  
     music: {
       type: String
     },
